@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed Salah – CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1923;
+    --navy: #0d2137;
+    --blue: #1a4a7a;
+    --sky: #2d7dd2;
+    --accent: #e8a030;
+    --light: #f4f7fb;
+    --mid: #e2eaf4;
+    --muted: #6b7f96;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--light);
+    color: var(--ink);
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  /* ── PAGE WRAPPER ── */
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: 0 20px 80px rgba(0,0,0,0.12);
+  }
+
+  /* ── HERO HEADER ── */
+  .hero {
+    background: var(--navy);
+    padding: 48px 56px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(45,125,210,0.25) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 200px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,160,48,0.12) 0%, transparent 70%);
+  }
+
+  .hero-inner { position: relative; z-index: 1; }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(232,160,48,0.18);
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+  }
+
+  .hero-sub {
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    margin-bottom: 28px;
+  }
+
+  .hero-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: rgba(255,255,255,0.8);
+    font-size: 12.5px;
+    text-decoration: none;
+  }
+  .contact-item .icon {
+    width: 28px; height: 28px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  /* ── ACCENT BAR ── */
+  .accent-bar {
+    height: 4px;
+    background: linear-gradient(to right, var(--accent) 0%, var(--sky) 50%, var(--navy) 100%);
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 0;
+  }
+
+  /* ── LEFT COLUMN ── */
+  .left { padding: 40px 40px 40px 56px; border-right: 1px solid var(--mid); }
+
+  /* ── RIGHT COLUMN ── */
+  .right { padding: 40px 40px 40px 32px; background: var(--light); }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 36px; }
+  .section:last-child { margin-bottom: 0; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--sky);
+    font-weight: 500;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--mid);
+  }
+
+  /* ── SUMMARY ── */
+  .summary p {
+    color: #3a4f65;
+    font-size: 13.5px;
+    line-height: 1.75;
+    font-weight: 400;
+  }
+
+  /* ── JOB ── */
+  .job { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px dashed var(--mid); }
+  .job:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+  .job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
+
+  .job-title { font-size: 15px; font-weight: 600; color: var(--navy); }
+  .job-badge {
+    background: var(--sky);
+    color: white;
+    font-size: 9px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .job-org { font-size: 13px; color: var(--sky); font-weight: 500; margin-bottom: 2px; }
+  .job-date { font-size: 11.5px; color: var(--muted); font-family: 'DM Mono', monospace; margin-bottom: 12px; }
+
+  .job ul { padding-left: 0; list-style: none; }
+  .job li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 6px;
+    color: #3a4f65;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .job li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  /* ── PROJECTS ── */
+  .project { margin-bottom: 20px; }
+  .project-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+  .project-name { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .project-year { font-size: 10.5px; color: var(--muted); font-family: 'DM Mono', monospace; }
+  .project p { font-size: 12px; color: #4a5f75; line-height: 1.6; }
+  .project-tag {
+    display: inline-block;
+    background: var(--mid);
+    color: var(--blue);
+    font-size: 9.5px;
+    font-family: 'DM Mono', monospace;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    margin-right: 4px;
+  }
+
+  /* ── RIGHT COLUMN COMPONENTS ── */
+  .skill-group { margin-bottom: 22px; }
+  .skill-group-title { font-size: 11px; font-weight: 600; color: var(--navy); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .skill-tag {
+    background: var(--white);
+    border: 1px solid var(--mid);
+    color: var(--blue);
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .skill-tag.accent {
+    background: rgba(232,160,48,0.1);
+    border-color: rgba(232,160,48,0.3);
+    color: #a06818;
+  }
+
+  .edu-item { margin-bottom: 16px; }
+  .edu-deg { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .edu-school { font-size: 12px; color: var(--sky); }
+  .edu-year { font-size: 11px; color: var(--muted); font-family: 'DM Mono', monospace; }
+
+  .cert-item {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 9px; font-size: 12px; color: #3a4f65;
+  }
+  .cert-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .award-item {
+    background: linear-gradient(135deg, rgba(232,160,48,0.12), rgba(45,125,210,0.08));
+    border: 1px solid rgba(232,160,48,0.25);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: var(--navy);
+    font-weight: 500;
+  }
+
+  .lang-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .lang-name { font-size: 12.5px; font-weight: 500; color: var(--navy); }
+  .lang-level { font-size: 10.5px; color: var(--muted); font-family: 'DM Mono', monospace; }
+  .lang-bar { height: 3px; background: var(--mid); border-radius: 2px; margin-top: 4px; }
+  .lang-fill { height: 100%; border-radius: 2px; background: linear-gradient(to right, var(--sky), var(--accent)); }
+
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-tag">Chief Technology Officer · 18+ Years</div>
+      <h1>Mohamed<br>Salah</h1>
+      <div class="hero-sub">Digital Transformation Leader &nbsp;·&nbsp; Odoo ERP Expert &nbsp;·&nbsp; AI Automation Strategist</div>
+      <div class="hero-contacts">
+        <a class="contact-item" href="mailto:mohamed.salah9@gmail.com">
+          <span class="icon">✉</span> mohamed.salah9@gmail.com
+        </a>
+        <span class="contact-item">
+          <span class="icon">📞</span> +20 1003024041
+        </span>
+        <span class="contact-item">
+          <span class="icon">📍</span> Cairo, Egypt
+        </span>
+        <span class="contact-item">
+          <span class="icon">🔗</span> linkedin.com/in/msalah22
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="accent-bar"></div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- LEFT -->
+    <div class="left">
+
+      <!-- SUMMARY -->
+      <div class="section summary">
+        <div class="section-label">Profile</div>
+        <p>CTO and Digital Transformation Leader with 18+ years of experience building and modernizing enterprise technology ecosystems across NGOs, enterprises, and mission-driven organizations. Specializes in ERP design, AI-driven automation, cloud infrastructure, and translating complex operations into scalable digital platforms. Open to advisory, consulting, and fractional CTO roles.</p>
+      </div>
+
+      <!-- EXPERIENCE -->
+      <div class="section">
+        <div class="section-label">Experience</div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Chief Technology Officer</div>
+            <span class="job-badge">Current</span>
+          </div>
+          <div class="job-org">LifeMakers Foundation</div>
+          <div class="job-date">Jan 2025 – Present &nbsp;·&nbsp; Cairo, Egypt</div>
+          <ul>
+            <li>Lead end-to-end digital transformation for 550+ employees across 16 offices & service booths, reporting directly to the CEO.</li>
+            <li>Architect and continuously evolve Odoo ERP ecosystem (v13→v18) covering Finance, HR, Supply Chain, Fundraising, MEAL, and Case Management.</li>
+            <li>Designed and executed an enterprise AI transformation program achieving 100% automated screening and 50%+ reduction in intake processing time.</li>
+            <li>Built AI-powered data warehouse, ETL pipelines, and BI platforms eliminating manual reporting across all departments.</li>
+            <li>Govern cloud infrastructure (Azure, AWS, M365), cybersecurity (Sophos), 70+ agent call center, and disaster recovery across all sites.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-title">IT Manager</div>
+          <div class="job-org">LifeMakers Foundation</div>
+          <div class="job-date">Aug 2018 – Dec 2024 &nbsp;·&nbsp; 6 yrs 5 mos</div>
+          <ul>
+            <li>Owned all IT systems, ERP lifecycle, vendor governance, and infrastructure across HQ, 16 branches, call centers, and field operations.</li>
+            <li>Scaled enterprise call center to 60+ agents; managed M365, Azure, Sophos security, NAS backup, and full IT budget.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-title">IT Manager</div>
+          <div class="job-org">Feed Company SAE</div>
+          <div class="job-date">Aug 2016 – Aug 2018 &nbsp;·&nbsp; 20 Branches</div>
+          <ul>
+            <li>Led full Odoo ERP implementation across 20 branches, bridging business and technical teams from requirements to go-live.</li>
+            <li>Designed enterprise VoIP infrastructure (Asterisk, 3CX) and applied full PM lifecycle across multiple IT projects.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-title">IT Manager</div>
+          <div class="job-org">Infomineo</div>
+          <div class="job-date">Jul 2015 – Jul 2016</div>
+          <ul>
+            <li>Managed daily IT operations, VoIP systems (Grandstream/Peplink), security, and annual IT budget.</li>
+            <li>Recruited, trained, and coached IT staff; ensured system stability and business continuity.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-title">IT Manager</div>
+          <div class="job-org">LifeMakers Foundation</div>
+          <div class="job-date">Nov 2013 – Jul 2015 &nbsp;·&nbsp; 28 Branches, 19 Governorates</div>
+          <ul>
+            <li>Led IT for 120 centers across 19 governorates supporting 14 nationwide humanitarian projects.</li>
+            <li>Administered Windows Server AD, DNS, DHCP; conducted ERP business analysis and database management.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-title">Senior IT Specialist</div>
+          <div class="job-org">Ibn Sina Pharma</div>
+          <div class="job-date">Oct 2011 – Nov 2013</div>
+          <ul>
+            <li>Managed enterprise IT across 3 sites; led setup of 2 new call center facilities including servers and Cisco networking.</li>
+            <li>Administered Windows Server, IBM AS/400, Active Directory, and enterprise mail systems.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-title">IT System Administrator</div>
+          <div class="job-org">Wipro Technologies — Sanmar Chemicals (On-site)</div>
+          <div class="job-date">Oct 2009 – Oct 2011 &nbsp;·&nbsp; 650+ Users</div>
+          <ul>
+            <li>Administered enterprise IT for 650+ users; managed Cisco infrastructure and 24/7 data center operations.</li>
+            <li>Led VMware/Hyper-V virtual environment deployments and enforced network security policies.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- PROJECTS -->
+      <div class="section">
+        <div class="section-label">Key Projects</div>
+
+        <div class="project">
+          <div class="project-header">
+            <div class="project-name">Enterprise ERP & Odoo Digital Transformation</div>
+            <span class="project-year">2019–Present</span>
+          </div>
+          <span class="project-tag">Odoo v13–v18</span><span class="project-tag">NGO</span><span class="project-tag">ERP</span>
+          <p>Architected a centralized Odoo ERP unifying fundraising, finance, HR, supply chain, and case management for 550+ employees across 16 offices. Delivered 5 mobile apps and WhatsApp/SMS integrations — establishing a replicable ERP model for humanitarian organizations.</p>
+        </div>
+
+        <div class="project">
+          <div class="project-header">
+            <div class="project-name">Enterprise AI Transformation Program</div>
+            <span class="project-year">Apr–Oct 2025</span>
+          </div>
+          <span class="project-tag">AI</span><span class="project-tag">Automation</span><span class="project-tag">MEAL</span>
+          <p>Designed a two-path AI adoption framework embedding AI across case management, MEAL, HR, and finance. Achieved 100% automated screening and 50% reduction in intake processing time, eliminating manual data entry organization-wide.</p>
+        </div>
+
+        <div class="project">
+          <div class="project-header">
+            <div class="project-name">AI-Powered Data Intelligence & BI Platforms</div>
+            <span class="project-year">May–Sep 2025</span>
+          </div>
+          <span class="project-tag">Data Warehouse</span><span class="project-tag">ETL</span><span class="project-tag">BI</span>
+          <p>Built automated data warehouse, ETL pipelines, and AI-driven BI feeds replacing manual reporting cycles. Applied AI to financial reconciliation, donation validation, and call center analytics.</p>
+        </div>
+
+        <div class="project">
+          <div class="project-header">
+            <div class="project-name">AI-Driven No-Code Digital Platforms</div>
+            <span class="project-year">Jun–Nov 2025</span>
+          </div>
+          <span class="project-tag">No-Code</span><span class="project-tag">AI</span><span class="project-tag">Governance</span>
+          <p>Delivered AI-built election/voting systems, volunteer referendum portal, asset and facility management using no-code tools — launching production-grade platforms in days at minimal cost.</p>
+        </div>
+
+        <div class="project">
+          <div class="project-header">
+            <div class="project-name">Odoo ERP Consulting — Egypt & Qatar</div>
+            <span class="project-year">Jan–Aug 2025</span>
+          </div>
+          <span class="project-tag">Consulting</span><span class="project-tag">Odoo v17–v19</span><span class="project-tag">Multi-Company</span>
+          <p>Delivered 5 Odoo implementations (Community & Enterprise) across retail, trading, and multi-branch businesses in Egypt and Qatar — including complex data migrations and multi-company setups.</p>
+        </div>
+
+        <div class="project">
+          <div class="project-header">
+            <div class="project-name">Digital Fundraising & Donor Engagement</div>
+            <span class="project-year">2022–2023</span>
+          </div>
+          <span class="project-tag">POS</span><span class="project-tag">Kiosks</span><span class="project-tag">Donations</span>
+          <p>Designed POS donation systems, self-service kiosks, and an integrated donations website — all connected to central ERP with real-time dashboards and automated reconciliation.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+
+      <!-- SKILLS -->
+      <div class="section">
+        <div class="section-label">Expertise</div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Digital & Strategy</div>
+          <div class="skill-tags">
+            <span class="skill-tag accent">Digital Transformation</span>
+            <span class="skill-tag accent">Technology Strategy</span>
+            <span class="skill-tag accent">Fractional CTO</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">ERP & Applications</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Odoo Enterprise</span>
+            <span class="skill-tag">Odoo Community</span>
+            <span class="skill-tag">v13 → v19</span>
+            <span class="skill-tag">ERP Implementation</span>
+            <span class="skill-tag">Data Migration</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">AI & Data</div>
+          <div class="skill-tags">
+            <span class="skill-tag">AI Automation</span>
+            <span class="skill-tag">No-Code AI</span>
+            <span class="skill-tag">ETL Pipelines</span>
+            <span class="skill-tag">BI Platforms</span>
+            <span class="skill-tag">Data Analytics</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Cloud & Infrastructure</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Microsoft Azure</span>
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Microsoft 365</span>
+            <span class="skill-tag">Odoo SH</span>
+            <span class="skill-tag">VPN / WiMAX</span>
+            <span class="skill-tag">NAS / Backup</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Security & Networking</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Sophos Firewall</span>
+            <span class="skill-tag">Cisco Routing</span>
+            <span class="skill-tag">Active Directory</span>
+            <span class="skill-tag">VoIP / 3CX</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Management</div>
+          <div class="skill-tags">
+            <span class="skill-tag">IT Governance</span>
+            <span class="skill-tag">Budget Control</span>
+            <span class="skill-tag">Vendor Management</span>
+            <span class="skill-tag">Team Leadership</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="section">
+        <div class="section-label">Education</div>
+
+        <div class="edu-item">
+          <div class="edu-deg">BSc, Information Technology</div>
+          <div class="edu-school">Al Minufiyah University</div>
+          <div class="edu-year">2003 – 2007</div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-deg">Diploma, Project Evaluation & Feasibility Studies</div>
+          <div class="edu-school">Cairo University – Faculty of Economics</div>
+          <div class="edu-year">2012 – 2013</div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-deg">Google Project Management Certificate</div>
+          <div class="edu-school">Coursera</div>
+          <div class="edu-year">2022 – 2023</div>
+        </div>
+      </div>
+
+      <!-- CERTIFICATIONS -->
+      <div class="section">
+        <div class="section-label">Certifications</div>
+        <div class="cert-item"><span class="cert-dot"></span>PMP – Project Management Professional</div>
+        <div class="cert-item"><span class="cert-dot"></span>Microsoft Certified System Engineer (MCSE)</div>
+        <div class="cert-item"><span class="cert-dot"></span>Agile Project Management</div>
+        <div class="cert-item"><span class="cert-dot"></span>Microsoft Project 2013 Advanced</div>
+        <div class="cert-item"><span class="cert-dot"></span>Office 365 – Microsoft Cloud</div>
+      </div>
+
+      <!-- AWARDS -->
+      <div class="section">
+        <div class="section-label">Awards</div>
+        <div class="award-item">🏆 Outstanding Performance Recognition</div>
+        <div class="award-item">🏆 2% Leaders Award</div>
+      </div>
+
+      <!-- LANGUAGES -->
+      <div class="section">
+        <div class="section-label">Languages</div>
+        <div class="lang-item">
+          <div>
+            <div class="lang-name">Arabic</div>
+            <div class="lang-level">Native</div>
+            <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+          </div>
+        </div>
+        <div class="lang-item">
+          <div>
+            <div class="lang-name">English</div>
+            <div class="lang-level">Full Professional</div>
+            <div class="lang-bar"><div class="lang-fill" style="width:88%"></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
