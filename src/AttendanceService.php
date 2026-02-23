@@ -21,7 +21,7 @@ class AttendanceService
             'created_by_user_id' => $data['created_by_user_id'] ?? null,
         ]);
 
-        return (int) $this->pdo->lastInsertId();
+        return Database::scopeIdentity($this->pdo);
     }
 
     public function confirmAttendance(int $eventId, array $attendanceRows, ?int $userId): void

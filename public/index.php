@@ -17,7 +17,7 @@ $evaluation = new EvaluationService($pdo);
 $integration = new IntegrationService($config);
 
 $method = $_SERVER['REQUEST_METHOD'];
-$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$path = request_path();
 
 try {
     if ($method === 'GET' && $path === '/health') {

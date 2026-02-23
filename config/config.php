@@ -1,4 +1,8 @@
 <?php
+
+require_once __DIR__ . '/../src/helpers.php';
+load_env_file(__DIR__ . '/../.env');
+
 return [
     'db' => [
         'host' => getenv('DB_HOST') ?: 'localhost',
@@ -8,7 +12,7 @@ return [
         'password' => getenv('DB_PASS') ?: 'YourStrong@Passw0rd',
     ],
     'app' => [
-        'base_url' => getenv('APP_BASE_URL') ?: 'http://localhost:8000',
+        'base_url' => getenv('APP_BASE_URL') ?: 'http://localhost',
         'default_locale' => getenv('APP_LOCALE') ?: 'ar',
     ],
     'integrations' => [

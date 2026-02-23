@@ -55,7 +55,7 @@ class TraineeService
             'group_id' => $data['group_id'] ?? null,
         ]);
 
-        return ['id' => (int) $this->pdo->lastInsertId(), 'trainee_code' => $code];
+        return ['id' => Database::scopeIdentity($this->pdo), 'trainee_code' => $code];
     }
 
     public function createBulk(array $rows): array

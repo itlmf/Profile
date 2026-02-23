@@ -5,29 +5,32 @@ It implements your core requirements for trainees, batches, attendance, weekly e
 
 ## What is included
 - SQL Server schema: `db/schema.sql`
+- SQL seed for Egyptian governorates: `db/seed_governorates.sql`
 - PHP API router: `public/index.php`
-- Services:
-  - `src/TraineeService.php` (single add, bulk add, search)
-  - `src/AttendanceService.php` (events + attendance + absence alerts)
-  - `src/EvaluationService.php` (weekly scoring + cumulative percent)
-  - `src/IntegrationService.php` (External SQL API + KoboToolbox)
+- IIS rewrite config: `public/web.config`
+- Windows deployment guide: `docs/windows-iis-deploy.md`
+- `.env` support (`.env.example` included)
 
 ## Requirements
 - PHP 8.1+
 - PDO SQL Server driver (`pdo_sqlsrv`)
 - SQL Server
 
-## Run locally
+## Quick run (development)
 ```bash
 php -S 0.0.0.0:8000 -t public
 ```
 
-## Deploy on another server
-1. Create DB in target SQL Server.
-2. Run `db/schema.sql` on target DB.
-3. Copy this module into your existing site.
-4. Set env vars (DB + integration tokens).
-5. Route requests to `public/index.php` or merge endpoints into your existing router.
+## Windows + IIS deployment (local SQL Server)
+1. Copy project to server.
+2. Copy `.env.example` to `.env` and set DB values.
+3. Point IIS site root to `public/`.
+4. Ensure URL Rewrite module is installed (for `public/web.config`).
+5. Run SQL scripts in this order:
+   - `db/schema.sql`
+   - `db/seed_governorates.sql`
+
+Detailed steps: `docs/windows-iis-deploy.md`
 
 ## Core business rules implemented
 - Full name must be at least 4 parts.
@@ -37,9 +40,6 @@ php -S 0.0.0.0:8000 -t public
 - Absence problem list if session absences exceed 3.
 - Weekly evaluation from 5 criteria (1 to 5), cumulative percentage returned.
 
-## Next phase you can add
-- Authentication + role-based permissions screens (Admin, IT Admin, Mentor, Supervisor, Trainee).
-- Arabic/English UI pages.
-- PDF export for trainee profile.
-- QR generation and scanner UI flow.
-- Hidden sensitive exit reasons for authorized roles only.
+## Important implementation notes
+- SQL Server identity IDs are returned using `SCOPE_IDENTITY()` (more reliable with sqlsrv on Windows/IIS).
+- Router path extraction supports IIS rewrite and `PATH_INFO`.
