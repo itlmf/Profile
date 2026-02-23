@@ -9,28 +9,37 @@ It implements your core requirements for trainees, batches, attendance, weekly e
 - PHP API router: `public/index.php`
 - IIS rewrite config: `public/web.config`
 - Windows deployment guide: `docs/windows-iis-deploy.md`
+- Windows helper scripts:
+  - `scripts/windows/setup-env.ps1`
+  - `scripts/windows/init-db.ps1`
 - `.env` support (`.env.example` included)
 
 ## Requirements
 - PHP 8.1+
 - PDO SQL Server driver (`pdo_sqlsrv`)
 - SQL Server
+- IIS URL Rewrite module (for IIS routing)
 
 ## Quick run (development)
 ```bash
 php -S 0.0.0.0:8000 -t public
 ```
 
-## Windows + IIS deployment (local SQL Server)
-1. Copy project to server.
-2. Copy `.env.example` to `.env` and set DB values.
-3. Point IIS site root to `public/`.
-4. Ensure URL Rewrite module is installed (for `public/web.config`).
-5. Run SQL scripts in this order:
-   - `db/schema.sql`
-   - `db/seed_governorates.sql`
+## Windows + IIS setup and start (quick)
+1. Put project at `C:\inetpub\ProfileProgram`.
+2. Point IIS site/app to `C:\inetpub\ProfileProgram\public`.
+3. Create `.env`:
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\windows\setup-env.ps1 -DbHost "localhost" -DbPort "1433" -DbName "profile_program" -DbUser "sa" -DbPass "YourStrong@Passw0rd"
+```
+4. Run DB scripts:
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\windows\init-db.ps1 -Server "localhost" -Database "profile_program" -User "sa" -Password "YourStrong@Passw0rd"
+```
+5. Start IIS site and test:
+- `http://localhost/health`
 
-Detailed steps: `docs/windows-iis-deploy.md`
+Detailed guide: `docs/windows-iis-deploy.md`
 
 ## Core business rules implemented
 - Full name must be at least 4 parts.
